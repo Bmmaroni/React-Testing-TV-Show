@@ -80,7 +80,11 @@ test('fetches and renders showData', async () => {
     await rerender(<App />);
     screen.debug();
   });
-  const title = screen.queryAllByTitle('H1');
+  const title = screen.getByRole('heading');
+  // const summary = screen. ;
+  const dd = screen.getByText(/select a season/i);
+  fireEvent.click(dd);
+
   
   await waitFor(() => {
     expect(title).toHaveTextContent(/stranger things/i);
